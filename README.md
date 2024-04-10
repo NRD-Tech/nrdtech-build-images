@@ -10,10 +10,10 @@ This Docker image is used to do builds in Bitbucket and GitHub pipelines for Pyt
 ```
 docker login
 docker build \
-    -t nrdtech/python-build-image:3.10 \
+    -t nrdtech/python-build-image:1.0 \
     -t nrdtech/python-build-image:latest \
     .
-docker push nrdtech/python-build-image:3.10
+docker push nrdtech/python-build-image:1.0
 docker push nrdtech/python-build-image:latest
 
 ```
