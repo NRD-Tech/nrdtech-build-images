@@ -1,19 +1,28 @@
-# NRD Tech Python Build Image
-This Docker image is used to do builds in Bitbucket and GitHub pipelines for Python projects
-
-## Included
-- AWS CLI
-- Python 3.10
-- Terraform 1.6.6
+# NRD Tech Build Images
+Docker images used as build environments in CI/CD Pipelines for NRD Tech projects
 
 ## Build and Deploy
 ```
+# Bitbucket Python 3.10
 docker login
-docker build \
-    -t nrdtech/python-build-image:1.0 \
-    -t nrdtech/python-build-image:latest \
+docker buildx build \
+    --platform linux/amd64 \
+    -t nrdtech/bitbucket-python310-build-image:1.0 \
+    -t nrdtech/bitbucket-python310-build-image:latest \
+    -f Dockerfile.bitbucket.python310 \
     .
-docker push nrdtech/python-build-image:1.0
-docker push nrdtech/python-build-image:latest
+docker push nrdtech/bitbucket-python310-build-image:1.0
+docker push nrdtech/bitbucket-python310-build-image:latest
+
+# Bitbucket React
+docker login
+docker buildx build \
+    --platform linux/amd64 \
+    -t nrdtech/bitbucket-react-build-image:1.0 \
+    -t nrdtech/bitbucket-react-build-image:latest \
+    -f Dockerfile.bitbucket.react \
+    .
+docker push nrdtech/bitbucket-react-build-image:1.0
+docker push nrdtech/bitbucket-react-build-image:latest
 
 ```
